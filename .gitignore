@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Java
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+dependency-reduced-pom.xml
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Appium
+appium.log
+node_modules/
+screenshots/
