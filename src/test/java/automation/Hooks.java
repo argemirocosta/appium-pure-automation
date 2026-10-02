@@ -32,7 +32,9 @@ public class Hooks {
 
         if (isIos()) {
             driver = new IOSDriver(server, new XCUITestOptions()
-                    .setDeviceName("iPhone 17")
+                    // an iPad because its keyboard can be dismissed; the iPhone
+                    // keyboard stays over the buttons at the bottom of the forms
+                    .setDeviceName("iPad (A16)")
                     .setPlatformVersion("26.5")
                     .setApp(apps + "My Demo App.app"));
         } else {
@@ -46,11 +48,12 @@ public class Hooks {
     }
 
     // Emulator images with 16 KB pages show an "Android App Compatibility"
-    // system dialog over the app on launch; tap OK when it appears.
+    // system dialog over the app. "Don't Show Again" keeps it away for the
+    // rest of the session; OK would bring it back on every new screen.
     private void dismissCompatibilityDialog() {
         try {
             new WebDriverWait(driver, Duration.ofSeconds(5))
-                    .until(ExpectedConditions.elementToBeClickable(By.id("android:id/button2")))
+                    .until(ExpectedConditions.elementToBeClickable(By.id("android:id/button1")))
                     .click();
         } catch (TimeoutException e) {
             // no dialog on this device
@@ -61,6 +64,7 @@ public class Hooks {
     public void closeApp() {
         if (driver != null) {
             driver.quit();
+            driver = null;
         }
     }
 }

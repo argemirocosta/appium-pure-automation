@@ -54,7 +54,7 @@ The `emulator` and `adb` commands come from the Android SDK and are on the
 2. Boot one by name:
 
    ```sh
-   xcrun simctl boot "iPhone 17"
+   xcrun simctl boot "iPad (A16)"
    ```
 
    This starts the device in the background, with no window.
@@ -70,7 +70,7 @@ The `emulator` and `adb` commands come from the Android SDK and are on the
 4. Shut it down:
 
    ```sh
-   xcrun simctl shutdown "iPhone 17"
+   xcrun simctl shutdown "iPad (A16)"
    ```
 
 ## Running the tests
