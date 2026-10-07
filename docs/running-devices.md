@@ -73,6 +73,32 @@ The `emulator` and `adb` commands come from the Android SDK and are on the
    xcrun simctl shutdown "iPad (A16)"
    ```
 
+## Opening the app
+
+Booting a device does not open any app, the same as turning on a phone.
+Tap the **My Demo App** icon on the device, or launch it from the terminal
+with the device running:
+
+```sh
+# Android
+adb shell monkey -p com.saucelabs.mydemoapp.android -c android.intent.category.LAUNCHER 1
+
+# iOS
+xcrun simctl launch booted com.saucelabs.mydemo.app.ios
+```
+
+If the app is not on the device yet (a new device, or the app was removed),
+install it first, from the project root:
+
+```sh
+adb install apps/mda-2.3.0-27.apk
+xcrun simctl install booted "apps/My Demo App.app"
+```
+
+The tests do not need any of this: Appium installs and opens the app at the
+start of each scenario, and the hooks close it at the end. After a test run
+the device is back on its home screen.
+
 ## Running the tests
 
 Starting the devices by hand is optional. Appium starts them when a session
