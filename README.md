@@ -64,6 +64,9 @@ To run a single scenario, filter by its name:
 mvn test -Dplatform=ios -Dcucumber.filter.name="Log in"
 ```
 
+When a scenario fails, a screenshot of the device at that moment is saved to
+`screenshots/`, named after the platform, the scenario and the time.
+
 ## Scenarios
 
 | Feature | Scenario |
